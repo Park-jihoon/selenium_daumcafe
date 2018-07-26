@@ -99,9 +99,9 @@ def go_cafe_list(page):
                     LASTBBSDEPTH = jt[1]
     
         #각 게시물의 접근 URL 을 추출한다.
-        list_a = soup.select('table.bbsList td.subject a')
-        for a in list_a:
-            href = a['href']
+        list_td = soup.select('table.bbsList td.subject')
+        for a in list_td:
+            href = a.select('a')[0]['href']
             BBS_LIST.append(href) #전역변수 bbs_list 에 크롤링할 게시물 url 목록을 저장한다.
         return len(list_a) #마지막페이지인지 확인을 위한 리스트 사이즈 반환
     except NoSuchElementException:
